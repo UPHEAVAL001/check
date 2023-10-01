@@ -1,7 +1,7 @@
 const e = require("express");
 const express = require("express");
 
-const SellBuy = require(" ../mongoose/models/sellBuy")
+const SellBuy = require("../mongoose/models/sellBuy")
 
 const router = express.Router()
 router.get("/", async (req, res) => {
@@ -10,11 +10,11 @@ router.get("/", async (req, res) => {
         if (req.query.product) {
         const data = await SellBuy.find({ productName: req.query.product })
         res.status(200).json(data)
-        }else if (req.query.sortby) {
+        }else if (req.query.sortBy) {
             let s = req.query.sortBy
             let i = "costPrice"
             let o = -1;
-            if (s.charAt(0) = 'l') {//l for lion
+            if (s.charAt(0) == 'l') {//l for lion
                 o = 1;
             }
             if(s.includes("S")) {
